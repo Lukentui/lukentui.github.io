@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="main--wrapper" id="app">
+		<div class="main--view">
+<!-- 			<div class="item">
+				Скачать что-то из чего-то	
+			</div> -->
+
+			<div class="item select-tabs">
+				<ul>
+					<li v-bind:class="{active: isInstagram}">Instagram</li>
+					<li v-bind:class="{active: isYoutube}">YouTube</li>
+					<li>Twitter</li>
+				</ul>	
+			</div>
+
+			<div class="item">
+				<div class="row service-input">
+					<div class="ten columns">
+				    	<input style="margin:0" class="input u-full-width" type="email" placeholder="Укажите ссылку для загрузки" v-model="url" @keyUp="parseService()">
+				    </div>
+
+				    <div class="two columns" style="width:17%;margin-left:0">
+				    	<button class="button button-primary u-full-width" style="padding:0" :disabled="!correctUrl" @click="checkPayload"><i class="fas fa-arrow-right"></i></button>
+					</div>
+				    
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="request-result">
+					<img style="border:1px solid #b7b7b7" :src="youtube.preview.current || youtube.preview.default" width="100%">
+<!-- v-if="canDownload" -->
+					<div v-if="canDownload">
+						<div class="row" style="margin-top:10px" v-if="isYoutube">
+							<div class="ten columns">
+								<select v-model="youtube.options.quality" class="u-full-width" style="margin-bottom:0">
+									<option value="0" disabled selected>Выберите качество</option>
+									<option :value="item.url" v-for="item in youtube.request">{{ item.quality }}</option>
+								</select>
+						    </div>
+
+						    <div class="two columns">
+						    	<a download target="_blank" :href="youtube.options.quality" class="button button-primary u-full-width" style="padding:0;margin:0"><i class="fas fa-download"></i></a>
+							</div>
+						    
+						</div>
+
+						<div class="row" v-if="isInstagram" style="margin-top:10px">
+							<button class="button button-primary u-full-width" :disabled="!canDownload" style="padding:0">Скачать фото</button>	    
+						</div>
+					</div>
+					<!-- <button disabled>Загрузить на компьютер</button> -->
+				</div>
+			</div>
+
+			<div class="item" style="background:transparent;color: #676767;">
+				<center>
+					Сделано с <i class="fas fa-heart" style="color: #e25555;opacity:.6"></i> для <i class="fas fa-users" style="color: #e25555;opacity:.6"></i>
+				</center>
+				<center>YouTube API by <a style="color: #676767;text-decoration:none" target="_blank" href="https://github.com/el3zahaby">El-zahaby</a></center>
+				<center>
+					<a target="_blank" href="https://vk.com/lukentui" style="color: #676767;text-decoration:none">Лука Никитин во ВКонтакте</a>
+				</center>
+			</div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+	<link rel="stylesheet" href="style.css">
+</body>
+</html>
