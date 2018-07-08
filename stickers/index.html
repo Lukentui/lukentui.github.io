@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.5.6.min.css">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.1/fullpage.min.js"></script>
+
+		<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="fullpage">
+			<section class="section section-welcome" v-for="sticker in stickers">
+				<div class="fully-centred">
+					<img :src="sticker" alt="Стикер" width="382px" height="auto">
+				</div>
+			</section>
+
+			<section class="section section-end">
+				<div class="fully-centred">
+					<div>
+						<p>Эй, ты все просмотрел! Я обиделась(</p>
+						<p>Ладно, чтобы меня задобрить, расскажи о этой штуке друзьям)</p>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<link rel="stylesheet" href="assets/styles.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.6/js/mdb.min.js"></script>
+		<script src="assets/script.js"></script>
+	</body>
+</html>
